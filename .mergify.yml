@@ -1,0 +1,19 @@
+merge_queue:
+  mode: parallel
+  max_parallel_checks: 2
+  skip_intermediate_results: true
+
+scopes:
+  source:
+    files:
+      service:
+        include:
+          - "svc/**/*"
+
+queue_rules:
+  - name: default
+    batch_size: 1
+    queue_conditions: []
+    merge_conditions:
+      - check-success = bb-ci-q7n4
+    merge_method: merge
